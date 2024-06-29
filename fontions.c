@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 13:47:11 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/06/29 17:48:14 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/06/29 18:10:21 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,30 @@ void	init_node_a(t_stack *a, t_stack *b)
 	cost_price(a,b);
 	set_cheapest(a);
 }
-static void	cost_price(t_stack *a, t_stack *b)
-{
-	int	len_a;
-	int	len_b;
 
-	len_a = stack_len(a);
-	len_b = stack_len(b);
-	while (a)
+void	init_nodes_b(t_stack *a, t_stack *b)
+{
+	current_index(a);
+	current_index(b);
+	set_target_b(a, b);
+}
+
+void	set_cheapest(t_stack *stack)
+{
+	long			cheapest_value;
+	t_stack	*cheapest_node;
+
+	if (!stack)
+		return ;
+	cheapest_value = LONG_MAX;
+	while (stack)
 	{
-		a -> cost = a -> pos;
-		if (!(a -> median))
-			a -> cost = len_a - (a -> pos);
-		if (a -> target -> median)
-			a -> cost += a -> target -> pos;
-		else
-			a -> cost += len_b - (a -> target -> pos);
-		a = a -> next;
+		if (stack-> cost < cheapest_value)
+		{
+			cheapest_value = stack-> cost;
+			cheapest_node = stack;
+		}
+		stack = stack->next;
 	}
+	cheapest_node->cheapest = true;
 }

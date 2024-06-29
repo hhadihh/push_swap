@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 17:07:47 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/06/29 18:02:18 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/06/29 18:17:11 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sort_3(t_stack	**a)
 	if ((*a) -> value > (*a) -> next -> value)
 		sa(a, false);
 }
-static void	set_target(t_stack 	*a, t_stack *b)
+static void	set_target_a(t_stack 	*a, t_stack *b)
 {
 	t_stack	*current_b;
 	t_stack	*target;
